@@ -6,9 +6,9 @@ using namespace std;
 
 int main()
 {
-	double z1, z2;
-	int a;
-	float Pi = 3.1415926535;
+	double z1, z2;// значения которые нужно посчитать
+	int a;// угол вводимый пользователем
+	const float Pi = 3.1415926535;//константа Пи
 	cout << "Var 10 Suvorov\n";
 	cout << "Vvedite ugol\n";
 	cin >> a;

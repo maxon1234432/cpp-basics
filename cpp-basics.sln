@@ -21,8 +21,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09-multi-file-project", "09
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10-templates", "10-templates\10-templates.vcxproj", "{E663E9BC-8EF7-41AD-A1B5-5B59AF81821B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1", "Project1\Project1.vcxproj", "{691C64A9-AF13-4E42-8388-A24133AD7CC2}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03-conditionals-loops-2", "03-conditionals-loops-2\03-conditionals-loops-2.vcxproj", "{01D266F4-860F-4E81-B6FF-10320F928B32}"
 EndProject
 Global
@@ -105,14 +103,6 @@ Global
 		{E663E9BC-8EF7-41AD-A1B5-5B59AF81821B}.Release|x64.Build.0 = Release|x64
 		{E663E9BC-8EF7-41AD-A1B5-5B59AF81821B}.Release|x86.ActiveCfg = Release|Win32
 		{E663E9BC-8EF7-41AD-A1B5-5B59AF81821B}.Release|x86.Build.0 = Release|Win32
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Debug|x64.ActiveCfg = Debug|x64
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Debug|x64.Build.0 = Debug|x64
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Debug|x86.ActiveCfg = Debug|Win32
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Debug|x86.Build.0 = Debug|Win32
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Release|x64.ActiveCfg = Release|x64
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Release|x64.Build.0 = Release|x64
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Release|x86.ActiveCfg = Release|Win32
-		{691C64A9-AF13-4E42-8388-A24133AD7CC2}.Release|x86.Build.0 = Release|Win32
 		{01D266F4-860F-4E81-B6FF-10320F928B32}.Debug|x64.ActiveCfg = Debug|x64
 		{01D266F4-860F-4E81-B6FF-10320F928B32}.Debug|x64.Build.0 = Debug|x64
 		{01D266F4-860F-4E81-B6FF-10320F928B32}.Debug|x86.ActiveCfg = Debug|Win32

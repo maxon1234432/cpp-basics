@@ -6,8 +6,8 @@
 using namespace std;
 int main()
 {
-	int a, b, c, shag, Xnach, Xkon, x;
-	float f = 0;
+	int a, b, c;
+	float f = 0, shag, Xnach, Xkon, x;
 	cout << "1abaSuvorov\n";
 	cout << "10var\n";
 	cout << "vvediteznach a=\n";
@@ -31,7 +31,7 @@ int main()
 		for (i = Xnach; i <= Xkon; i += shag)
 		{
 
-			f = a * (i*i) - (b*i) + c; cout << "\n  " << i << "  " << f;
+			f = float(a * (i*i) - (b*i) + c); cout << "\n  " << i << "  " << f;
 			cout << " ";
 
 		}
