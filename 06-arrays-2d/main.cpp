@@ -56,6 +56,6 @@ int main()
 			sum += matrix[i][j]; // увеличиваем сумму
 		}
 	}
-	std::cout << "\n" << "summa = " << sum; // вывод
+	std::cout << "\n" << "summa el vyshe glavnoi diagonali = " << sum; // вывод
 	system("PAUSE");
 }
