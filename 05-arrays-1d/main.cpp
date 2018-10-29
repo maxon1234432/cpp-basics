@@ -6,13 +6,12 @@ using namespace std;
 
 int main()
 {
+	int Arr[20], min, k = 0;
 	cout << "1zadanie";
 	cout << "\n";
 	cout << "dan massiv\n";
-	int Arr[20], Brr[10], Crr[20], min, k = 0;
-	//Arr = new int[20]; 
-	//Brr = new int[10];
-	//Crr = new int[10];
+	
+
 	srand(time(NULL));
 	int num;
 	for (int i = 0; i < 20; i++)
@@ -65,10 +64,7 @@ int main()
 	cout << "bez sortirovki";
 	cout << "\n";
 	//	int i = 0;
-	for (int j = 0; j < 20; j++) {
-		printf("(%d)%d;", j + 1, Arr[j]);
-		//cout << Arr[j] + " ; ";
-	}
+	for (int j = 0; j < 20; j++) {	printf("(%d)%d;", j + 1, Arr[j]); }
 
 	for (int i = 0; i < 10; i++) {
 		if (i % 2 == 0) {
@@ -80,14 +76,10 @@ int main()
 	}
 
 	cout << "\n";
-	cout << "el c index";
+	cout << "OTSORTIROVANNY MASSIV";
 	cout << "\n";
-	//	int i = 0;
-	for (int j = 0; j < 20; j++) {
-		printf("(%d)%d;", j + 1, Arr[j]);
-		//cout << Arr[j] + " ; "; 
-	}
-
+	
+	for (int j = 0; j < 20; j++) {printf("(%d)%d;", j + 1, Arr[j]);	}
 
 	cout << "\n";
 	system("pause");

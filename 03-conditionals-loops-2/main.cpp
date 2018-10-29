@@ -1,6 +1,4 @@
 #include <iostream>
-#include <conio.h>
-#include <locale.h>
 #include <math.h>
 
 using namespace std;
@@ -14,6 +12,7 @@ int main()
 		sum = 0;
 		k = 0;
 		nj++;
+	
 		for (double n = 0; eps < fabs(pow(i, (2 * n + 1)) / (2 * n + 1)); n++)
 		{
 			k++;

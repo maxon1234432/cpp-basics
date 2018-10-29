@@ -7,6 +7,8 @@ int main()
 	int const WEITH = 10; // размерность матрицы
 	int matrix[WEITH][WEITH]; // создаем Матриц
 	srand(time(NULL)); // генератор случайных чисел
+	std::cout << "MATRICA A 10X10";
+	std::cout << "\n";
 	for (int i = 0; i < WEITH; i++)
 	{
 		for (int j = 0; j < WEITH; j++)
@@ -55,4 +57,5 @@ int main()
 		}
 	}
 	std::cout << "\n" << "summa = " << sum; // вывод
+	system("PAUSE");
 }
