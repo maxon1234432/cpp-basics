@@ -5,9 +5,9 @@
 using namespace std;
 int main()
 {
-	int a, b, c;
+	float a, b, c;
 	float f = 0, shag, Xnach, Xkon, x;
-	cout << "1abaSuvorov\n";
+	cout << "labaSuvorov\n";
 	cout << "10var\n";
 	cout << "vvediteznach a=\n";
 	cin >> a;
@@ -25,24 +25,22 @@ int main()
 	cout << "\n";
 
 	int i;
-	if ((Xnach < 3) && (b != 0))
+	//if ((Xnach < 3) && (b != 0))
 		//cout << " i=\n  " << i << "  " << "znach";
 		for (i = Xnach; i <= Xkon; i += shag)
 		{
-
-			f = float(a * (i*i) - (b*i) + c); cout << "\n  " << i << "  " << f;
-			cout << " ";
-
+			if((i<3)&&(b !=0)) { f = float(a * (i*i) - (b*i) + c); cout << "\n  " << i << "  1usl f=" << f;
+					cout << " ";
+			}
+			else 
+			{
+				if ((i > 3) && (b == 0)) { f = float((i - a) / (i - c)); cout << "\n  " << i << " 2usl f=" << f; }
+				else
+				{
+					f = i / c; cout << "\n  " << i << "else  f=" << f;
+				}
+			}
 		}
-
-	if ((Xnach > 3) && (b == 0))
-		for (i = Xnach; i <= Xkon; i += shag)
-		{
-			f = float((i - a) / (i - c)); cout << "\n  " << i << "  " << f;
-		}
-	else
-		for (i = Xnach; i <= Xkon; i += shag) { f = i / c; cout << "\n  " << i << "  " << f; }
-	cout << "\n ";
 
 
 	system("PAUSE");
