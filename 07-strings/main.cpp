@@ -1,5 +1,3 @@
-//#include "stdafx.h"
-//#include "pch.h"
 #include <iostream>
 #include <string> // подключаем строки
 #include <fstream> // подключаем файлы
