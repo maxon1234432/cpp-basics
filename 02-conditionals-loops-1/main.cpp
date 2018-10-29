@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 #include <locale.h>
 #include <math.h>
 
