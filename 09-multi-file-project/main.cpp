@@ -1,5 +1,3 @@
-//#include "stdafx.h"
-//#include "pch.h"
 #include <iostream>
 #include <ctime>
 #include <cmath>
@@ -7,7 +5,8 @@
 using namespace std;
 
 
-int main() {
+int main()
+{
 	int Arr[20];
 	srand(time(NULL));
 	int num;
@@ -19,5 +18,4 @@ int main() {
 	zadacha1(Arr);
 	zadacha2(Arr);
 	zadacha3(Arr);
-	system("pause");
 }

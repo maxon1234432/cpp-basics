@@ -19,7 +19,10 @@ int main()
 		num = rand() % 15 - 0;
 		Arr[i] = num;
 	}
-	for (int i = 0; i < 20; i++) { cout << Arr[i] << " "; }
+	for (int i = 0; i < 20; i++)
+	{ 
+		cout << Arr[i] << " ";
+	}
 	cout << endl;
 	min = Arr[1];
 	for (int i = 0; i < 20; i++)
@@ -27,14 +30,11 @@ int main()
 		if (abs(Arr[i]) < min)
 		{
 			min = abs(Arr[i]);
-
-
 		}
 
 	}
 	cout << "minimalny po modulu = " << abs(min);
 	cout << "\n";
-	//cout << " index 0 = " << k;
 	cout << "2zadanie";
 	cout << "\n";
 	k = 20;
@@ -47,7 +47,9 @@ int main()
 		}
 	}
 	if (k == 20)
-		cout << "net elementa ravnogo 0"; else {
+		cout << "net elementa ravnogo 0"; 
+	else 
+	{
 		cout << "index elementa ravnogo 0=" << k;
 		cout << "\n";
 		//i = k;
@@ -64,10 +66,14 @@ int main()
 	cout << "bez sortirovki";
 	cout << "\n";
 	//	int i = 0;
-	for (int j = 0; j < 20; j++) {	printf("(%d)%d;", j + 1, Arr[j]); }
+	for (int j = 0; j < 20; j++) 
+	{	
+		printf("(%d)%d;", j + 1, Arr[j]);
+	}
 
 	for (int i = 0; i < 10; i++) {
-		if (i % 2 == 0) {
+		if (i % 2 == 0)
+		{
 			int cup;
 			cup = Arr[i];
 			Arr[i] = Arr[19 - i];
@@ -79,8 +85,11 @@ int main()
 	cout << "OTSORTIROVANNY MASSIV";
 	cout << "\n";
 	
-	for (int j = 0; j < 20; j++) {printf("(%d)%d;", j + 1, Arr[j]);	}
+	for (int j = 0; j < 20; j++)
+	{
+		printf("(%d)%d;", j + 1, Arr[j]);
+	}
 
-	cout << "\n";
-	system("pause");
+	
+	
 }

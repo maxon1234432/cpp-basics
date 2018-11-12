@@ -20,6 +20,5 @@ int main()
 		}
 		printf("n =%3.0f\tx = %3.4f\tsum = %3.4f\tk = %3.0d\n", nj, i, sum, k);
 	}
-	system("PAUSE");
 	return 0;
 }

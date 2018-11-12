@@ -4,8 +4,7 @@
 using namespace std;
 int main()
 {
-	float a, b, c;
-	float f = 0, shag, Xnach, Xkon, x;
+	float f = 0, shag, Xnach, Xkon, x, a, b, c;
 	cout << "labaSuvorov\n";
 	cout << "10var\n";
 	cout << "vvediteznach a=\n";
@@ -24,24 +23,25 @@ int main()
 	cout << "\n";
 
 	int i;
-	//if ((Xnach < 3) && (b != 0))
-		//cout << " i=\n  " << i << "  " << "znach";
+	
 		for (i = Xnach; i <= Xkon; i += shag)
 		{
-			if((i<3)&&(b !=0)) { f = float(a * (i*i) - (b*i) + c); cout << "\n  " << i << "  1usl f=" << f;
+			if((i<3)&&(b !=0)) 
+			{
+				f = float(a * (i*i) - (b*i) + c); cout << "\n  " << i << "  1usl f=" << f;
 					cout << " ";
 			}
 			else 
 			{
-				if ((i > 3) && (b == 0)) { f = float((i - a) / (i - c)); cout << "\n  " << i << " 2usl f=" << f; }
+				if ((i > 3) && (b == 0)) 
+				{
+					f = float((i - a) / (i - c)); cout << "\n  " << i << " 2usl f=" << f;
+				}
 				else
 				{
 					f = i / c; cout << "\n  " << i << "else  f=" << f;
 				}
 			}
-		}
-
-
-	system("PAUSE");
+		}	
 }
 

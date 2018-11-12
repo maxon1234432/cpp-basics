@@ -90,6 +90,5 @@ int main() {
 		summGlavDiag(matrix);
 	}
 	fin3.close();
-	system("PAUSE");
 	return 0;
 }
