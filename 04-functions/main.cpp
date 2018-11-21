@@ -28,7 +28,7 @@ void func(double x1, double x2, double dx, double eps) {
 		}
 		vivod(nj, i, sum, k);
 	}
-	system("PAUSE");
+	
 }
 double summa(double i, double n) {
 	return pow(i, (2 * n + 1)) / (2 * n + 1);
