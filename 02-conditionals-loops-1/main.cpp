@@ -28,18 +28,21 @@ int main()
 		{
 			if((i<3)&&(b !=0)) 
 			{
-				f = float(a * (i*i) - (b*i) + c); cout << "\n  " << i << "  1usl f=" << f;
+				f = float(a * (i*i) - (b*i) + c); 
+				cout << "\n  " << i << "  1usl f=" << f;
 					cout << " ";
 			}
 			else 
 			{
 				if ((i > 3) && (b == 0)) 
 				{
-					f = float((i - a) / (i - c)); cout << "\n  " << i << " 2usl f=" << f;
+					f = float((i - a) / (i - c));
+					cout << "\n  " << i << " 2usl f=" << f;
 				}
 				else
 				{
-					f = i / c; cout << "\n  " << i << "else  f=" << f;
+					f = i / c;
+					cout << "\n  " << i << "else  f=" << f;
 				}
 			}
 		}	
