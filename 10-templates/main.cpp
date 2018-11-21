@@ -15,17 +15,17 @@ void input(type(&matrix)[WEITH][WEITH], ifstream &fin) {
 
 template <class type>
 void searchLocMin(type(matrix)[WEITH][WEITH]) {
-	int numberOfMin = 0; // переменная определяющая количество локальных минимумов
+	int numberOfMin = 0; // kol-vo lok minimumov
 	for (int i = 0; i < WEITH; i++)
 	{
 		for (int j = 0; j < WEITH; j++)
 		{
-			bool min = true; // изначально надеемся что она таковая
+			bool min = true; 
 			if (i != 0)
-				if (matrix[i - 1][j] <= matrix[i][j]) // если сосед меньше то переменная не локальный минимум
+				if (matrix[i - 1][j] <= matrix[i][j]) // esly sosed menshe to ne lok min
 					min = false;
 			if (i != WEITH - 1)
-				if (matrix[i + 1][j] <= matrix[i][j]) // дальше по аналогии
+				if (matrix[i + 1][j] <= matrix[i][j]) // analogy
 					min = false;
 			if (j != 0)
 				if (matrix[i][j - 1] <= matrix[i][j])
@@ -34,23 +34,23 @@ void searchLocMin(type(matrix)[WEITH][WEITH]) {
 				if (matrix[i][j + 1] <= matrix[i][j])
 					min = false;
 			if (min == true)
-				numberOfMin++; // увеличиваем счётчик локальных минимумов
+				numberOfMin++; // schetchik loc min +1
 		}
 	}
-	std::cout << "Kol-vo lokalnih minimumov = " << numberOfMin << endl; // вывод
+	std::cout << "Kol-vo lokalnih minimumov = " << numberOfMin << endl; // vyvod
 }
 
 template <class type>
 void summGlavDiag(type(matrix)[WEITH][WEITH]) {
-	int sum = 0; // переменная определяющая сумму
+	int sum = 0; // summa
 	for (int j = 0; j < WEITH; j++)
 	{
-		for (int i = j + 1; i < WEITH; i++) // проход выше главной диагонали
+		for (int i = j + 1; i < WEITH; i++) // prochod vyshe gl diiag
 		{
-			sum += matrix[i][j]; // увеличиваем сумму
+			sum += matrix[i][j]; // summa + element matr
 		}
 	}
-	std::cout << "summa = " << sum << endl; // вывод
+	std::cout << "summa = " << sum << endl; // vyvod
 }
 
 int main() {
