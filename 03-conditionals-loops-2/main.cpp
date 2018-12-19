@@ -1,24 +1,62 @@
 #include <iostream>
-#include <math.h>
+#include <iomanip>
+#include <string>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
-	double x1 = 0.1, x2 = 0.5, dx = 0.05, eps = 0.0001, sum, nj = 0;
-	int k;
-	for (double i = x1; i < x2; i = i + dx)
-	{
-		sum = 0;
-		k = 0;
-		nj++;
-	
-		for (double n = 0; eps < fabs(pow(i, (2 * n + 1)) / (2 * n + 1)); n++)
-		{
-			k++;
-			sum += pow(i, (2 * n + 1)) / (2 * n + 1);//(x/1)+(x3/3)
-		}
-		printf("n =%3.0f\tx = %3.4f\tsum = %3.4f\tk = %3.0d\n", nj, i, sum, k);
-	}
-	return 0;
+    const int kMaxIter = 1000000;
+
+    double xn, xk, dx, eps;
+    cout << "|x| < 1\n";
+    cout << "Enter xn: ";
+    cin >> xn;
+    cout << "Enter xk >= xn: ";
+    cin >> xk;
+    cout << "Enter dx > 0: ";
+    cin >> dx;
+    cout << "Enter eps > 0: ";
+    cin >> eps;
+
+    if (dx <= 0 || xk < xn || eps <= 0 || abs(xn) >= 1 || abs(xk) >= 1)
+    {
+        cout << "\nError input data.\n";
+        return 1;
+    }
+
+    cout << endl << string(66, '-') << endl;
+    cout << "|      x      ";
+    cout << "|  arth(x) (mine)  ";
+    cout << "|  arth(x) (cmath) ";
+    cout << "| iterations |\n";
+    cout << string(66, '-') << endl;
+
+    cout << fixed;
+
+    for (double x = xn; x <= xk; x += dx)
+    {
+        double nth_term = x;
+        double func = nth_term;
+        int n = 1;
+        while (abs(nth_term) > eps)
+        {
+            nth_term = pow(x, (2 * n + 1)) / (2 * n + 1);
+            func += nth_term;
+            n++;
+            if (n > kMaxIter) break;
+        }
+
+        cout << "|" << setw(11) << x << setw(3) << "|" << setw(13);
+        if (n <= kMaxIter)
+            cout << func << setw(6) << "|";
+        else
+            cout << "  limit exceeded  |";
+        cout << setw(13) << atanh(x) << setw(6) << "|";
+        cout << setw(7) << n << setw(7) << "|\n";
+    }
+    cout << string(66, '-') << endl;
+
+    return 0;
 }

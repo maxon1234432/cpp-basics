@@ -1,52 +1,105 @@
 #include <iostream>
-#include <string> // подключаем строки
+#include <string>
 
-using namespace std; // используем стандартное пространство имен
+using namespace std;
 
-struct MARSH // структура
+struct Marsh
 {
-	string nachPunkt, konechPunkt; // название начального пункта и пункта конца
-	int number; // номер маршрута
+    string starting_point;
+    string final_destination;
+    int route_number;
 };
+
+bool IsNumber(string number);
+void AddMarshes(Marsh* marshes, const int kNumMarshes);
+void SortMarshes(Marsh* marshes, const int kNumMarshes);
+void PrintMarshes(Marsh* marshes, const int kNumMarshes);
+void PrintRequiredMarsh(Marsh* marshes, const int kNumMarshes, int route_number);
 
 int main()
 {
-	MARSH listMarsh[8]; // массив маршрутов
-	for (int i = 0; i < 8; i++) { // далее заполнение маршрута
-		cout << "vvedite nachPunkt dla stancii #" << i + 1 << "\n";
-		cin >> listMarsh[i].nachPunkt;
-		cout << "vvedite konechPunkt dla stancii #" << i + 1 << "\n";
-		cin >> listMarsh[i].konechPunkt;
-		cout << "vvedite number dla stancii #" << i + 1 << "\n";
-		cin >> listMarsh[i].number;
-	}
-	for (int i = 0; i < 8; i++) { // сортировка маршрутов по номеру
-		for (int j = 1; j < 8 - i; j++) {
-			if (listMarsh[j - 1].number > listMarsh[j].number) {
-				MARSH marshCup;
-				marshCup = listMarsh[j - 1];
-				listMarsh[j - 1] = listMarsh[j];
-				listMarsh[j] = marshCup;
-			}
-		}
-	}
-	for (int i = 0; i < 8; i++) { // вывод маршрутов на экран
-		cout << i + 1 << ")nachPunkt = " << listMarsh[i].nachPunkt;
-		cout << " ; konechPunkt = " << listMarsh[i].konechPunkt;
-		cout << " ; number = " << listMarsh[i].number << "\n";
-	}
-	cout << "Vvedite nomer marshruta" << "\n";
-	int number; // введённый номер
-	cin >> number;
-	bool naiden = false; // переменная отвечающая за нахождение маршрута
-	for (int i = 0; i < 8; i++) {
-		if (number == listMarsh[i].number) {
-			naiden = true; // значение Правда если маршрут найден и вводим его на экран
-			cout << i + 1 << ")nachPunkt = " << listMarsh[i].nachPunkt;
-			cout << " ; konechPunkt = " << listMarsh[i].konechPunkt;
-			cout << " ; number = " << listMarsh[i].number << "\n";
-		}
-	}
-	if (!naiden) // если маршрут не найден выводится сообщение
-		cout << "Marshrut ne naiden \n";
+    const int kNumMarshes = 8;
+    Marsh marshes[kNumMarshes];
+    AddMarshes(marshes, kNumMarshes);
+    cout << string(80, '-') << endl;
+
+    cout << "\nMarshes sorted by route number:\n";
+    SortMarshes(marshes, kNumMarshes);
+    PrintMarshes(marshes, kNumMarshes);
+    cout << endl << string(80, '-') << endl;
+
+    int route_number;
+    cout << "\nEnter route number: ";
+    cin >> route_number;
+    PrintRequiredMarsh(marshes, kNumMarshes, route_number);
+
+    return 0;
+}
+
+bool IsNumber(string number)
+{
+    for (size_t i = 0; i < number.length(); i++)
+        if (!isdigit(number[i]))
+            return 0;
+    return 1;
+}
+
+void AddMarshes(Marsh* marshes, const int kNumMarshes)
+{
+    string buf;
+    for (int i = 0; i < kNumMarshes; i++)
+    {
+        cout << "Marsh #" << i + 1 << "\nStarting point: ";
+        getline(cin, marshes[i].starting_point);
+
+        cout << "Final destination: ";
+        getline(cin, marshes[i].final_destination);
+
+    repeat_route_number:
+        cout << "Route number: ";
+        getline(cin, buf);
+        if (!IsNumber(buf))
+        {
+            cout << "Error: digits only!\n";
+            goto repeat_route_number;
+        }
+        marshes[i].route_number = stoi(buf);
+        cout << endl;
+    }
+}
+
+void SortMarshes(Marsh* marshes, const int kNumMarshes)
+{
+    for (int i = 0; i < kNumMarshes - 1; i++)
+        for (int j = 0; j < kNumMarshes - i - 1; j++)
+            if (marshes[j].route_number > marshes[j + 1].route_number)
+                swap(marshes[j], marshes[j + 1]);
+}
+
+void PrintMarshes(Marsh* marshes, const int kNumMarshes)
+{
+    for (int i = 0; i < kNumMarshes; i++)
+    {
+        cout << "\nStarting point: " << marshes[i].starting_point;
+        cout << "\nFinal destination: " << marshes[i].final_destination;
+        cout << "\nRoute number: " << marshes[i].route_number << endl;
+    }
+}
+
+void PrintRequiredMarsh(Marsh* marshes, const int kNumMarshes, int route_number)
+{
+    bool marsh_found = false;
+    for (int i = 0; i < kNumMarshes; i++)
+    {
+        if (marshes[i].route_number == route_number)
+        {
+            cout << "\nStarting point: " << marshes[i].starting_point;
+            cout << "\nFinal destination: " << marshes[i].final_destination;
+            cout << endl;
+            marsh_found = true;
+        }
+    }
+
+    if (!marsh_found)
+        cout << "Marsh not found.\n";
 }

@@ -1,95 +1,84 @@
 #include <iostream>
-#include <ctime>
-#include <cmath>
+
 using namespace std;
 
+void PrintArray(int* arr, const int kArraySize);
+int FindAbsMin(int* arr, const int kArraySize);
+int SumAbsElem(int* arr, const int kArraySize, int begin);
+int FindFirstZero(int* arr, const int kArraySize);
+void SortArray(int* arr, const int kArraySize);
 
 int main()
 {
-	int Arr[20], min, k = 0;
-	cout << "1zadanie";
-	cout << "\n";
-	cout << "dan massiv\n";
-	
+    const int kArraySize = 10;
+    int arr[kArraySize] = { 5, 1, -2, 0, -4, 5, 0, -7, 8, 4 };
 
-	srand(time(NULL));
-	int num;
-	for (int i = 0; i < 20; i++)
-	{
-		num = rand() % 15 - 0;
-		Arr[i] = num;
-	}
-	for (int i = 0; i < 20; i++)
-	{ 
-		cout << Arr[i] << " ";
-	}
-	cout << endl;
-	min = Arr[1];
-	for (int i = 0; i < 20; i++)
-	{
-		if (abs(Arr[i]) < min)
-		{
-			min = abs(Arr[i]);
-		}
+    cout << "Initial array:\n";
+    PrintArray(arr, kArraySize);
+    cout << endl;
 
-	}
-	cout << "minimalny po modulu = " << abs(min);
-	cout << "\n";
-	cout << "2zadanie";
-	cout << "\n";
-	k = 20;
-	for (int i = 0; i < 20; i++)
-	{
-		if (Arr[i] == 0)
-		{
-			k = i;
-			break;
-		}
-	}
-	if (k == 20)
-		cout << "net elementa ravnogo 0"; 
-	else 
-	{
-		cout << "index elementa ravnogo 0=" << k;
-		cout << "\n";
-		//i = k;
-		int summ = 0;
-		for (int i = k; i < 20; i++)
-		{
-			summ = summ + Arr[i];
-		}
-		cout << "Summa el posle 1 el ravnogo 0=" << summ;
-	}
-	cout << "\n";
-	cout << "3 Zadanie";
-	cout << "\n";
-	cout << "bez sortirovki";
-	cout << "\n";
-	//	int i = 0;
-	for (int j = 0; j < 20; j++) 
-	{	
-		printf("(%d)%d;", j + 1, Arr[j]);
-	}
+    cout << "\nAbsolute minimum element of array = ";
+    cout << FindAbsMin(arr, kArraySize) << endl;
 
-	for (int i = 0; i < 10; i++) {
-		if (i % 2 == 0)
-		{
-			int cup;
-			cup = Arr[i];
-			Arr[i] = Arr[19 - i];
-			Arr[19 - i] = cup;
-		}
-	}
+    cout << "\nSum of absolute values of array after first zero = ";
+    int first_zero = FindFirstZero(arr, kArraySize);
+    if (first_zero != -1)
+        cout << SumAbsElem(arr, kArraySize, first_zero + 1) << endl;
+    else
+        cout << "\nNo zero elements in array.\n";
 
-	cout << "\n";
-	cout << "OTSORTIROVANNY MASSIV";
-	cout << "\n";
-	
-	for (int j = 0; j < 20; j++)
-	{
-		printf("(%d)%d;", j + 1, Arr[j]);
-	}
+    SortArray(arr, kArraySize);
+    cout << "\nSorted array:\n";
+    PrintArray(arr, kArraySize);
+    cout << endl;
 
-	
-	
+    return 0;
+}
+
+void PrintArray(int* arr, const int kArraySize)
+{
+    cout << "[";
+    for (int i = 0; i < kArraySize; i++)
+        cout << arr[i] << ((i < kArraySize - 1) ? (", ") : ("]"));
+}
+
+int FindAbsMin(int* arr, const int kArraySize)
+{
+    int abs_min = arr[0];
+    for (int i = 1; i < kArraySize; i++)
+        if (abs(arr[i]) < abs(abs_min))
+            abs_min = arr[i];
+    return abs_min;
+}
+
+int FindFirstZero(int* arr, const int kArraySize)
+{
+    for (int i = 0; i < kArraySize; i++)
+        if (arr[i] == 0)
+            return i;
+    return -1;
+}
+
+int SumAbsElem(int* arr, const int kArraySize, int begin)
+{
+    int sum = 0;
+    for (int i = begin; i < kArraySize; i++)
+        sum += abs(arr[i]);
+    return sum;
+}
+
+void SortArray(int* arr, const int kArraySize)
+{
+    int index = 0;
+    int* tmp_arr = new int[kArraySize];
+
+    for (int i = 1; i < kArraySize; i += 2)
+        tmp_arr[index++] = arr[i];
+    for (int i = 0; i < kArraySize; i += 2)
+        tmp_arr[index++] = arr[i];
+
+    for (int i = 0; i < kArraySize; i++)
+        arr[i] = tmp_arr[i];
+
+    delete[] tmp_arr;
 }

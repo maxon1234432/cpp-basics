@@ -1,33 +1,64 @@
 #include <iostream>
-#include <string> // подключаем строки
-#include <fstream> // подключаем файлы
-#include <regex> // подключаем маски
+#include <fstream>
+#include <string>
+#include <locale>
 
-using namespace std; // используем стандартное пространство имен
+using namespace std;
+
+bool IsVowel(char letter);
+string RemoveSurroundingPuncts(string word, size_t& word_len);
 
 int main()
 {
-	string buffer = ""; // сюда будем класть считанные строки
-	string str = ""; // сюда будем класть найденные слова
-	ifstream file("data.txt"); // файл из которого читаем (для линукс путь будет выглядеть по другому)
-	std::regex reg("([A-Za-z]+)"); // маска для слова
-	std::regex rx("([A-Z][a-z]*)"); // маска для слова с большой буквы
-	std::cmatch res;
-	while (getline(file, buffer)) { // пока не достигнут конец файла класть очередную строку в переменную
-		while (true) {
-			std::regex_search(buffer.c_str(), res, reg); // ищем слова
-			if (res.size() != 0) { // если слово найдено
-				str = res[1]; // копируем его в переменную
-				buffer = res.suffix(); // остальной кусок возвращаем в буфер
-				std::regex_match(str.c_str(), res, rx); // проверка на наличие большой буквы
-				if (res.size() != 0) { // если формат соответствует маске
-					std::cout << res[1] << "\n"; // выводим на экран
-				}
-			}
-			else cout << "ne nashel"; // если слово не найдено
-			break; // заканчиваем работу с буфером (Выходим из цикла)
-		}
-	}
-	
-	file.close(); // обязательно закрываем файл что бы не повредить его
+    ifstream fin("text.txt");
+    if (!fin)
+    {
+        cout << "File \"text.txt\" not found.";
+        return 1;
+    }
+
+    string word;
+    while (fin >> word)
+    {
+        size_t word_len = word.length();
+        word = RemoveSurroundingPuncts(word, word_len);
+        if (IsVowel(word[0]) && IsVowel(word[word_len - 1]))
+            cout << word << endl;
+    }
+
+    fin.close();
+    return 0;
+}
+
+string RemoveSurroundingPuncts(string word, size_t& word_len)
+{
+    // Before the word.
+    int i = 0;
+    while (ispunct(word[i]))
+    {
+        i++;
+        word_len--;
+    }
+    word = word.substr(i, word_len);
+
+    // After the word.
+    i = word_len - 1;
+    while (ispunct(word[i]))
+    {
+        i--;
+        word_len--;
+    }
+    word = word.substr(0, word_len);
+
+    return word;
+}
+
+bool IsVowel(char letter)
+{
+    letter = tolower(letter, locale());
+    char vowels[] = { 'a', 'e', 'i', 'o', 'u' };
+    for (int i = 0; i < 5; i++)
+        if (letter == vowels[i])
+            return 1;
+    return 0;
 }

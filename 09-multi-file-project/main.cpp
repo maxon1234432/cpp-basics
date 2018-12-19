@@ -1,21 +1,28 @@
-#include <iostream>
-#include <ctime>
-#include <cmath>
 #include "functions.h"
-using namespace std;
-
 
 int main()
 {
-	int Arr[20];
-	srand(time(NULL));
-	int num;
-	for (int i = 0; i < 20; i++)
-	{
-		num = rand() % 15 - 0;
-		Arr[i] = num;
-	}
-	zadacha1(Arr);
-	zadacha2(Arr);
-	zadacha3(Arr);
+    const int kArraySize = 10;
+    int arr[kArraySize] = { 5, 1, -2, 0, -4, 5, 0, -7, 8, 4 };
+
+    cout << "Initial array:\n";
+    PrintArray(arr, kArraySize);
+    cout << endl;
+
+    cout << "\nAbsolute minimum element of array = ";
+    cout << FindAbsMin(arr, kArraySize) << endl;
+
+    cout << "\nSum of absolute values of array after first zero = ";
+    int first_zero = FindFirstZero(arr, kArraySize);
+    if (first_zero != -1)
+        cout << SumAbsElem(arr, kArraySize, first_zero + 1) << endl;
+    else
+        cout << "\nNo zero elements in array.\n";
+
+    SortArray(arr, kArraySize);
+    cout << "\nSorted array:\n";
+    PrintArray(arr, kArraySize);
+    cout << endl;
+
+    return 0;
 }

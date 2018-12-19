@@ -1,72 +1,49 @@
-#include <iostream>
-#include <ctime>
-#include <cmath>
-using namespace std;
+#include "functions.h"
 
-void zadacha1(int Arr[20]) {
-	cout << "1zadanie";
-	cout << "\n";
-	cout << "dan massiv\n";
-	for (int i = 0; i < 20; i++) { cout << Arr[i] << " "; }
-	cout << endl;
-	int min = Arr[1];
-	for (int i = 0; i < 20; i++)
-	{
-		if (abs(Arr[i]) < min)
-		{
-			min = abs(Arr[i]);
-		}
-	}
-	cout << "minimalny po modulu = " << abs(min);
-	cout << "\n";
+void PrintArray(int* arr, const int kArraySize)
+{
+    cout << "[";
+    for (int i = 0; i < kArraySize; i++)
+        cout << arr[i] << ((i < kArraySize - 1) ? (", ") : ("]"));
 }
 
-void zadacha2(int Arr[20]) {
-	cout << "2zadanie";
-	cout << "\n";
-	int k = 20;
-	for (int i = 0; i < 20; i++)
-	{
-		if (Arr[i] == 0)
-		{
-			k = i;
-			break;
-		}
-	}
-	if (k == 20)
-		cout << "net elementa ravnogo 0"; else {
-		cout << "index elementa ravnogo 0=" << k;
-		cout << "\n";
-		//i = k;
-		int summ = 0;
-		for (int i = k; i < 20; i++)
-		{
-			summ = summ + Arr[i];
-		}
-		cout << "Summa el posle 1 el ravnogo 0=" << summ;
-	}
-	cout << "\n";
+int FindAbsMin(int* arr, const int kArraySize)
+{
+    int abs_min = arr[0];
+    for (int i = 1; i < kArraySize; i++)
+        if (abs(arr[i]) < abs(abs_min))
+            abs_min = arr[i];
+    return abs_min;
 }
 
-void zadacha3(int Arr[20]) {
-	cout << "3 Zadanie";
-	cout << "\n";
-	cout << "bez sortirovki";
-	cout << "\n";
-	//	int i = 0;
-	for (int j = 0; j < 20; j++) { printf("(%d)%d;", j + 1, Arr[j]); }
+int FindFirstZero(int* arr, const int kArraySize)
+{
+    for (int i = 0; i < kArraySize; i++)
+        if (arr[i] == 0)
+            return i;
+    return -1;
+}
 
-	for (int i = 0; i < 10; i++) {
-		if (i % 2 == 0) {
-			int cup;
-			cup = Arr[i];
-			Arr[i] = Arr[19 - i];
-			Arr[19 - i] = cup;
-		}
-	}
-	cout << "\n";
-	cout << "OTSORTIROVANNY MASSIV";
-	cout << "\n";
-	for (int j = 0; j < 20; j++) { printf("(%d)%d;", j + 1, Arr[j]); }
-	cout << "\n";
+int SumAbsElem(int* arr, const int kArraySize, int begin)
+{
+    int sum = 0;
+    for (int i = begin; i < kArraySize; i++)
+        sum += abs(arr[i]);
+    return sum;
+}
+
+void SortArray(int* arr, const int kArraySize)
+{
+    int index = 0;
+    int* tmp_arr = new int[kArraySize];
+
+    for (int i = 1; i < kArraySize; i += 2)
+        tmp_arr[index++] = arr[i];
+    for (int i = 0; i < kArraySize; i += 2)
+        tmp_arr[index++] = arr[i];
+
+    for (int i = 0; i < kArraySize; i++)
+        arr[i] = tmp_arr[i];
+
+    delete[] tmp_arr;
 }
